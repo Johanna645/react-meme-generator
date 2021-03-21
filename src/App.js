@@ -48,14 +48,26 @@ function App() {
               onChange={handleChange2}
             />
             <br />
-            <p className="App-p2">Don't like fish, try "buzz"?</p>
-            <input
-              type="text"
-              className="App-textfield"
-              value={picture}
-              onChange={handlePictureChange}
-            />
-
+            <div>
+              <label for="picture">
+                <p className="App-p2">
+                  Don't like fish, choose another picture?
+                </p>
+                <select
+                  className="App-textfield"
+                  name="picture"
+                  id="picture"
+                  type="image"
+                  value={picture}
+                  onChange={handlePictureChange}
+                >
+                  <option value="bs">bs</option>
+                  <option value="soup-nazi">soup</option>
+                  <option value="keanu">keanu</option>
+                  <option value="fbf">frog</option>
+                </select>
+              </label>
+            </div>
             <br />
             <br />
             <button
@@ -63,7 +75,7 @@ function App() {
               onClick={() => {
                 axios
                   .get(
-                    `https://api.memegen.link/images/${picture}/${textInputFirstLine}/${textInputSecondLine}.png`,
+                    `https://api.memegen.link/images/${picture}/${textInputFirstLine}/${textInputSecondLine}.png?width=325&height=325`,
                     { responseType: 'blob' },
                     {
                       /* blob = binary large object (images, pdfs,...) */
